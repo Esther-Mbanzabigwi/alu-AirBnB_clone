@@ -1,34 +1,23 @@
 #!/usr/bin/python3
-"""
-Module documentation
-"""
-
+"""Test suite for Amenity class of the models.amenity module"""
 import unittest
+
 from models.base_model import BaseModel
 from models.amenity import Amenity
 
 
 class TestAmenity(unittest.TestCase):
-    """ Test the Amenity class """
+    """Test cases for the Amenity class"""
 
-    def test_instance(self):
-        """ Test instance """
-        obj = Amenity()
-        self.assertIsInstance(obj, Amenity)
+    def setUp(self):
+        self.amenity = Amenity()
 
-    def test_is_subclass(self):
-        """test the instance of sub classes"""
-        amenity = Amenity()
-        self.assertTrue(issubclass(type(amenity), BaseModel))
+    def test_amenity_is_a_subclass_of_basemodel(self):
+        self.assertTrue(issubclass(type(self.amenity), BaseModel))
 
-    def test_name(self):
-        """test name"""
-        amenity = Amenity()
-        self.assertEqual(amenity.name, "")
-        amenity.name = "Wifi"
-        self.assertEqual(amenity.name, "Wifi")
-        self.assertIsNotNone(amenity.id)
+    def test_attr_is_a_class_attr(self):
+        self.assertTrue(hasattr(self.amenity, "name"))
 
-
-if __name__ == "__main__":
-    unittest.main()
+    def test_class_attr(self):
+        self.assertIs(type(self.amenity.name), str)
+        self.assertFalse(bool(getattr(self.amenity, "name")))
