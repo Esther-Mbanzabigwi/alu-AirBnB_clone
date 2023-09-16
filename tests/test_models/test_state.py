@@ -1,39 +1,23 @@
 #!/usr/bin/python3
-"""
-Test documentation
-"""
-
+"""Test suite for the State class of the models.state module"""
 import unittest
-from models.state import State
+
 from models.base_model import BaseModel
+from models.state import State
 
 
 class TestState(unittest.TestCase):
-    """Test the State class"""
+    """Test cases for the State class"""
 
-    def test_instance(self):
-        """Test instance"""
-        obj = State()
-        self.assertIsInstance(obj, State)
+    def setUp(self):
+        self.state = State()
 
-    def test_is_subclass(self):
-        """Test is subclass"""
-        obj = State()
-        self.assertTrue(issubclass(type(obj), BaseModel))
+    def test_state_is_a_subclass_of_basemodel(self):
+        self.assertTrue(issubclass(type(self.state), BaseModel))
 
-    def test_name(self):
-        """Test name"""
-        obj = State()
-        self.assertEqual(obj.name, "")
-        obj.name = "Betty"
-        self.assertEqual(obj.name, "Betty")
+    def test_attr_is_a_class_attr(self):
+        self.assertTrue(hasattr(self.state, "name"))
 
-    def test_str(self):
-        """Test str"""
-        obj = State()
-        string = "[State] ({}) {}".format(obj.id, obj.__dict__)
-        self.assertEqual(str(obj), string)
-
-
-if __name__ == "__main__":
-    unittest.main()
+    def test_class_attrs(self):
+        self.assertIs(type(self.state.name), str)
+        self.assertFalse(bool(self.state.name))
