@@ -1,15 +1,27 @@
+<<<<<<< HEAD
 #!/usr/bin/python3
-""" City class."""
+"""
+Module documentation
+"""
+
 from models.base_model import BaseModel
 
 
 class City(BaseModel):
-    """Represent a city.
-
-    Attributes:
-        state_id (str): State id.
-        name (str): Name of city.
     """
-
+    City class
+    """
     state_id = ""
     name = ""
+=======
+#!/usr/bin/python3
+""" City class """
+
+from models.base_model import BaseModel
+
+
+class City(BaseModel):
+    """ City class """
+    state_id = ""
+    name = ""
+>>>>>>> ac9420e7d7b307ba5d5ce47970877a097d4d2bae
