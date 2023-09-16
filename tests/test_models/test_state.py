@@ -1,23 +1,37 @@
 #!/usr/bin/python3
-"""Test suite for the State class of the models.state module"""
 import unittest
-
-from models.base_model import BaseModel
-from models.state import State
+from models import State
+import datetime
 
 
 class TestState(unittest.TestCase):
-    """Test cases for the State class"""
 
     def setUp(self):
-        self.state = State()
 
-    def test_state_is_a_subclass_of_basemodel(self):
-        self.assertTrue(issubclass(type(self.state), BaseModel))
+        self.test_model1 = State()
+        self.test_model2 = State()
 
-    def test_attr_is_a_class_attr(self):
-        self.assertTrue(hasattr(self.state, "name"))
+    def test_basic_setup(self):
 
-    def test_class_attrs(self):
-        self.assertIs(type(self.state.name), str)
-        self.assertFalse(bool(self.state.name))
+        self.assertTrue(hasattr(self.test_model1, "name"))
+        self.assertFalse(hasattr(self.test_model1, "first_name"))
+        self.assertTrue(self.test_model1.id != self.test_model2.id)
+        m1c = self.test_model1.created_at
+        m2c = self.test_model2.created_at
+        self.assertTrue(m1c != m2c)
+        self.assertTrue(type(m1c) is datetime.datetime)
+
+    def test_types(self):
+
+        self.assertTrue(type(self.test_model1.name) is str)
+
+    def test_save(self):
+
+        m1u = self.test_model1.updated_at
+        self.test_model1.save()
+        m1u_saved = self.test_model1.updated_at
+        self.assertFalse(m1u == m1u_saved)
+
+
+if __name__ == '__main__':
+    unittest.main()
