@@ -1,4 +1,4 @@
-#This file conteins authors details for the AirBnB Clone CLI Project
+#This file conteins authors details for the AirBnB Clone Project
 
-Dohessikan Xavier <@alustudent.com>
-Alvin Shaka Katabarwa <a.katabarwa@alustudent.com>
+Mawia Katiwa <m.katiwa@alustudent.com>
+Esther Mbanzabigwi <e.mbanzabig@alustudent.com>
